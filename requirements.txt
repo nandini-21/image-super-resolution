@@ -2,7 +2,6 @@ streamlit
 Pillow
 torch
 matplotlib
-time
 h5py
 numpy
 math
