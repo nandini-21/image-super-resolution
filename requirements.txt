@@ -4,4 +4,3 @@ torch
 matplotlib
 h5py
 numpy
-math
