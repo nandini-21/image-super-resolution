@@ -18,6 +18,7 @@ from torchvision.utils import save_image
 from PIL import Image
 from torchvision import transforms
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 class SRCNN(nn.Module):
   def __init__(self):
