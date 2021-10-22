@@ -37,29 +37,29 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 Specifying the dimensions of sub-images on which the model is to be trained.
 """
 
-img_rows, img_cols = 33, 33
-out_rows, out_cols = 33, 33
+# img_rows, img_cols = 33, 33
+# out_rows, out_cols = 33, 33
 
 """Assigning the training file (.h5) to a variable called file.
 The file has sub-images of T91 images.
 """
 
-sub_img_file = h5py.File('./train_mscale.h5')
+# sub_img_file = h5py.File('./train_mscale.h5')
 
-"""Extracting labels and targets from file and storing into separate variables."""
+# """Extracting labels and targets from file and storing into separate variables."""
 
-input = sub_img_file['data'][:]
-target = sub_img_file['label'][:]
-sub_img_file.close()
+# input = sub_img_file['data'][:]
+# target = sub_img_file['label'][:]
+# sub_img_file.close()
 
-input = input.astype('float32')
-target = target.astype('float32')
+# input = input.astype('float32')
+# target = target.astype('float32')
 
-"""Splitting the dataset into training and validating datasets."""
+# """Splitting the dataset into training and validating datasets."""
 
-(x_train, x_val, y_train, y_val) = train_test_split(input, target, test_size = 0.25)
-print('Training Samples: ', x_train.shape)
-print('Validation Samples: ', x_val.shape)
+# (x_train, x_val, y_train, y_val) = train_test_split(input, target, test_size = 0.25)
+# print('Training Samples: ', x_train.shape)
+# print('Validation Samples: ', x_val.shape)
 
 """## Custom Dataset Class"""
 
@@ -100,8 +100,8 @@ class SRCNN(nn.Module):
 Specifying training data and validation data.
 """
 
-train_data = SRCNNDataset(x_train, y_train)
-val_data = SRCNNDataset(x_val, y_val)
+# train_data = SRCNNDataset(x_train, y_train)
+# val_data = SRCNNDataset(x_val, y_val)
 
 """The model is defined and loaded onto the current device."""
 
@@ -109,19 +109,19 @@ model = SRCNN().to(device)
 
 """Specifying the learning parameters."""
 
-batch_size = 64
-epochs = 400
-lr = 0.001
+# batch_size = 64
+# epochs = 400
+# lr = 0.001
 
 """Loading the training data and validation data into train_loader and val_loader, respectively."""
 
-train_loader = DataLoader(train_data, batch_size = batch_size)
-val_loader = DataLoader(val_data, batch_size = batch_size)
+# train_loader = DataLoader(train_data, batch_size = batch_size)
+# val_loader = DataLoader(val_data, batch_size = batch_size)
 
 """Specifying the optimizer and the loss function."""
 
-optimizer = optim.Adam(model.parameters(), lr = lr)
-criterion = nn.MSELoss()
+# optimizer = optim.Adam(model.parameters(), lr = lr)
+# criterion = nn.MSELoss()
 
 """psnr function is to calculate peak signal to noise ratio of target image to output image."""
 
