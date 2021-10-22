@@ -1,6 +1,0 @@
-streamlit
-Pillow
-torch
-matplotlib
-h5py
-numpy
