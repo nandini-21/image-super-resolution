@@ -4,11 +4,11 @@ from PIL import Image, ImageOps
 import utils
 
 st.title("Image Super Resolution")
-st.text("Insert the image below")
+st.text("Upload the image here")
 
 
 #creating file uploader
-image_file = st.file_uploader(label = '', type = ['png'])
+image_file = st.file_uploader(label = '', type = ['png', 'jpg', 'jpeg'])
 
 INPUT_PATH = "./input.png"
 OUT_PATH = "./output.png"
@@ -31,13 +31,13 @@ else:
 
 
 if st.button("Process"):
-    st.header("Low resolution image is:")
+    st.header("Low Resolution Image")
     st.image(in_img, width = 300)
 
     out_img = utils.get_prediction(INPUT_PATH)
     out_img.save(OUT_PATH)
 
-    st.header("High resolution image is:")
+    st.header("High Resolution Image:")
     st.image(out_img, width = 300)
 
 
